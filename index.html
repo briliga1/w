@@ -31,10 +31,10 @@
 			{
 				url = document.referrer; 
 				ref = url.match(/:\/\/(.[^/]+)/)[1];
-				document.write('<title>'+$_GET('id')+'|dd '+url+'</title>');
-			} else document.write('<title>'+$_GET('id')+'|dd no url</title>');
+				document.write('<title>'+$_GET('id')+'|— '+url+'</title>');
+			} else document.write('<title>'+$_GET('id')+'|— no url</title>');
 		</script>
-		<script src="https://4spn.github.io/w/player.js?ver=14" type="text/javascript"></script>
+		<script src="https://briliga1.github.io/w/player.js?ver=14" type="text/javascript"></script>
 		
 		
 		<style>
@@ -82,7 +82,7 @@
 		<div id="preroll" style="width:100%;height:100%"></div>
 
 		<script>
-			var player = new Playerjs({id:"preroll", "url":"https://4spn.github.io/c/?id="+$_GET('id'), embed:"https://4spn.github.io/c/?id="+$_GET('id'), file:"//fb.wcup.one/"+$_GET('id')+".m3u8", ratio:"16/9", autoplay:$autoPlay, "default_quality":"240p"});
+			var player = new Playerjs({id:"preroll", "url":"https://briliga1.github.io/w/?id="+$_GET('id'), embed:"https://briliga1.github.io/w/?id="+$_GET('id'), file:"//fb.wcup.one/"+$_GET('id')+".m3u8", ratio:"16/9", autoplay:$autoPlay, "default_quality":"240p"});
 		</script>
 
 <script data-cfasync='false'>
@@ -103,7 +103,7 @@
 		var dopAdv=false;
 			if (document.referrer) 
 			{
-				if (!ref.includes('ga.co') && !ref.includes('tv.xy') && !ref.includes('up.on') && !ref.includes('on.live') && !ref.includes('rt.to')) dopAdv=true;
+				if (!ref.includes('up.me') && !ref.includes('ga.co') && !ref.includes('tv.xy') && !ref.includes('up.on') && !ref.includes('on.live') && !ref.includes('rt.to')) dopAdv=true;
 			} else dopAdv=true;
 
 			if (dopAdv) setTimeout('newUrl("https://w.afu.su/-")',330000);
