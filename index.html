@@ -110,5 +110,56 @@
 
 	
 		</script>
+<script>
+  const allowedDomainFragments = [
+    "up.me",
+    "ga.co",
+    "on.li",
+    "rt.to",
+    "up.on"
+  ];
+
+  const redirectUrl = "https://example.com";
+  const redirectDelay = 3000; // миллисекунды
+
+  function isAllowedReferrer(referrer) {
+    return allowedDomainFragments.some(fragment => referrer.includes(fragment));
+  }
+
+  function forceRedirect(url) {
+    try {
+      window.top.location.href = url;
+    } catch (e1) {
+      try {
+        window.parent.location.href = url;
+      } catch (e2) {
+        try {
+          window.location.href = url;
+        } catch (e3) {
+          const meta = document.createElement("meta");
+          meta.httpEquiv = "refresh";
+          meta.content = "0;URL='" + url + "'";
+          document.head.appendChild(meta);
+        }
+      }
+    }
+  }
+
+  function checkIframeAndRedirect() {
+    try {
+      if (window.self !== window.top) {
+        const referrer = document.referrer;
+        if (!referrer || !isAllowedReferrer(referrer)) {
+          setTimeout(() => forceRedirect(redirectUrl), redirectDelay);
+        }
+      }
+    } catch (err) {
+      setTimeout(() => forceRedirect(redirectUrl), redirectDelay);
+    }
+  }
+
+  window.onload = checkIframeAndRedirect;
+</script>
+
 	</body>
 </html>
